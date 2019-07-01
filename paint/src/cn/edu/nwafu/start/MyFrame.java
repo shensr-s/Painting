@@ -389,8 +389,8 @@ public class MyFrame extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JOptionPane.showMessageDialog(null,
-                            "" + "关于画图\n" + "****该软件由沈仕瑞开发完成****\n" + "****班级：计算机1602班     *****\n"
-                                    + "****学号：2016012841  *****\n" + "****邮箱：1182857284@qq.com\n",
+                            "" + "关于画图\n" + "****该软件由***开发完成****\n" + "****班级：计算机1602班     *****\n"
+                                    + "****学号：00000000  *****\n" + "****邮箱：1111111@qq.com\n",
                             "关于画图", JOptionPane.PLAIN_MESSAGE);
 
                 }
