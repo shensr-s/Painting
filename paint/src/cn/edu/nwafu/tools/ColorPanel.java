@@ -14,9 +14,6 @@ import cn.edu.nwafu.start.MyFrame;
 
 public class ColorPanel extends JPanel {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
     // 左边面板添加子面板
     private JPanel paneldownchild;
@@ -34,13 +31,13 @@ public class ColorPanel extends JPanel {
     private ImageIcon iconn;
     // 调色板
     // 颜色数组，用来设置按钮的背景颜色
-    private Color[] colors = { new Color(255, 255, 255), new Color(0, 0, 0), new Color(127, 127, 127),
+    private Color[] colors = {new Color(255, 255, 255), new Color(0, 0, 0), new Color(127, 127, 127),
             new Color(195, 195, 195), new Color(136, 0, 21), new Color(185, 122, 87), new Color(237, 28, 36),
             new Color(255, 174, 201), new Color(255, 127, 39), new Color(255, 242, 0), new Color(239, 228, 176),
             new Color(34, 117, 76), new Color(181, 230, 29), new Color(0, 162, 232), new Color(153, 217, 234),
             new Color(63, 72, 204), new Color(112, 146, 190), new Color(163, 73, 164), new Color(200, 191, 231),
-            new Color(89, 173, 154), new Color(8, 193, 194), new Color(9, 253, 76), new Color(153,217,234),
-            new Color(199, 73, 4) };
+            new Color(89, 173, 154), new Color(8, 193, 194), new Color(9, 253, 76), new Color(153, 217, 234),
+            new Color(199, 73, 4)};
 
     public ColorPanel() {
         addColorPanel();
@@ -127,42 +124,35 @@ public class ColorPanel extends JPanel {
         btn_color.setPreferredSize(new Dimension(40, 40));
         btn_color.setToolTipText("更多颜色");
         right.add(btn_color);
-        btn_color.addActionListener(new ActionListener() {
+        btn_color.addActionListener(e -> chooseColor());//java8的lambda表达式，和下边注释代码功能相同
+//        btn_color.addActionListener(new ActionListener() {
+//
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                chooseColor();
+//
+//            }
+//        });
+//java8的lambda表达式，
+        bt.addActionListener(e -> {
+            // 拿到被选中按钮的对象
+            JButton jbt = (JButton) e.getSource();
+            // 拿到被选中按钮的背景颜色
+            Color c = jbt.getBackground();
+            // 把背景颜色复制给WIndowStart中的颜色属性
+            MyFrame.color = c;
+            MyFrame.itemList[MyFrame.index].color = c;
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                chooseColor();
-
-            }
         });
 
-        bt.addActionListener(new ActionListener() {
+        bt1.addActionListener(e -> {
+            // 拿到被选中按钮的对象
+            JButton jbt = (JButton) e.getSource();
+            // 拿到被选中按钮的背景颜色
+            Color c = jbt.getBackground();
+            MyFrame.color = c;
+            MyFrame.itemList[MyFrame.index].color = c;
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // 拿到被选中按钮的对象
-                JButton jbt = (JButton) e.getSource();
-                // 拿到被选中按钮的背景颜色
-                Color c = jbt.getBackground();
-                // 把背景颜色复制给WIndowStart中的颜色属性
-                MyFrame.color = c;
-                MyFrame.itemList[MyFrame.index].color = c;
-
-            }
-        });
-
-        bt1.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // 拿到被选中按钮的对象
-                JButton jbt = (JButton) e.getSource();
-                // 拿到被选中按钮的背景颜色
-                Color c = jbt.getBackground();
-                MyFrame.color = c;
-                MyFrame.itemList[MyFrame.index].color = c;
-
-            }
         });
 
     }

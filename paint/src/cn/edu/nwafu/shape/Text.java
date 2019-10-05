@@ -2,22 +2,21 @@ package cn.edu.nwafu.shape;
 
 import java.awt.*;
 
-public class Text extends Shape// 文字
-{
 
-	/**
-	 * 定义一个Text类，继承Shape类，用于文字输入
-	 * 
-	 */
+public class Text extends Shape {
 
-	public void draw(Graphics2D g) {
-		//Font(String name, int style, int size) 
-		g.setColor(color);
-		g.setFont(new Font(fontName, italic+blodtype, fontSize));
-		if (s != null) {
-			
-			g.drawString(s, x1, y1);
-			//System.out.println(fontName+"  "+s+" "+fontSize );
-		}
-	}
+    /**
+     * 瀹氫箟涓�涓猅ext绫伙紝缁ф壙Shape绫伙紝鐢ㄤ簬鏂囧瓧杈撳叆
+     */
+
+    public void draw(Graphics2D g) {
+        //Font(String name, int style, int size)
+        g.setColor(color);
+        g.setFont(new Font(fontName, italic + blodtype, fontSize));
+        if (s != null) {
+
+            g.drawString(s, x1, y1);
+            //System.out.println(fontName+"  "+s+" "+fontSize );
+        }
+    }
 }

@@ -1,7 +1,5 @@
 package cn.edu.nwafu.start;
 
-import javax.swing.UIManager;
-
 public class StartProject {
     /**
      * 启动界面

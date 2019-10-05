@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.Random;
 
 /**
- * ����
+ * 刷子类
  * @author Administrator
  *
  */

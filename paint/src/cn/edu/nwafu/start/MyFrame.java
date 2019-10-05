@@ -1,33 +1,18 @@
 package cn.edu.nwafu.start;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.*;
+import cn.edu.nwafu.shape.Rectangle;
+import cn.edu.nwafu.shape.Shape;
+import cn.edu.nwafu.shape.*;
+import cn.edu.nwafu.tools.ColorPanel;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
-
-import cn.edu.nwafu.shape.Circle;
-import cn.edu.nwafu.shape.Hexagon;
-import cn.edu.nwafu.shape.Images;
-import cn.edu.nwafu.shape.Line;
-import cn.edu.nwafu.shape.Oval;
-import cn.edu.nwafu.shape.Brush;
-import cn.edu.nwafu.shape.Pencil;
-import cn.edu.nwafu.shape.Pentagon;
-import cn.edu.nwafu.shape.Rectangle;
-import cn.edu.nwafu.shape.RoundRect;
-import cn.edu.nwafu.shape.Rubber;
-import cn.edu.nwafu.shape.Shape;
-import cn.edu.nwafu.shape.Text;
-import cn.edu.nwafu.shape.Triangle;
-import cn.edu.nwafu.shape.FillCircle;
-import cn.edu.nwafu.shape.FillOval;
-import cn.edu.nwafu.shape.FillRect;
-import cn.edu.nwafu.shape.FillRoundRect;
-import cn.edu.nwafu.tools.ColorPanel;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class MyFrame extends JFrame {
 
@@ -761,12 +746,13 @@ public class MyFrame extends JFrame {
 
             toolbar.setLayout(new FlowLayout(FlowLayout.LEFT));
             toolbar.setBackground(new Color(195, 195, 195));
-            btn_blod = new Checkbox("粗体");
-            btn_italic = new Checkbox("斜体");
+            //中文会乱码
+            btn_blod = new Checkbox("blod");//粗体
+            btn_italic = new Checkbox("italic");//斜体
             btn_blod.setBackground(new Color(195, 195, 195));
             btn_italic.setBackground(new Color(195, 195, 195));
-            btn_blod.setPreferredSize(new Dimension(40, 30));
-            btn_italic.setPreferredSize(new Dimension(40, 30));
+            btn_blod.setPreferredSize(new Dimension(45, 30));
+            btn_italic.setPreferredSize(new Dimension(45, 30));
 
             jfont_size = new JComboBox<String>(fontSize);
             jfont_size.setPreferredSize(new Dimension(50, 30));

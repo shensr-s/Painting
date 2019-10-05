@@ -4,7 +4,7 @@ import java.awt.*;
 
 /**
  * 橡皮檫类
- * @author 沈仕瑞
+ * @author
  *
  */
 public class Rubber extends Shape {
