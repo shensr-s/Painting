@@ -5,32 +5,26 @@ import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 import cn.edu.nwafu.start.MyFrame;
 
+/**
+ * 调色板
+ *
+ * @author shensr
+ */
 public class ColorPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
-    // 左边面板添加子面板
-    private JPanel paneldownchild;
-    public static JButton bt;
-    public static JButton bt1;
-    // 按钮特效,简单的双线斜面边框
-    private BevelBorder bb;
-    private BevelBorder bb1;
+    private static JButton bt;
+    private static JButton bt1;
 
-    private JPanel left;
-    // 右面板
-    private JPanel right;
-    // 添加颜色窗口
-    private JButton btn_color;
-    private ImageIcon iconn;
-    // 调色板
-    // 颜色数组，用来设置按钮的背景颜色
+    /**
+     * 调色板
+     * 颜色数组，用来设置按钮的背景颜色
+     */
     private Color[] colors = {new Color(255, 255, 255), new Color(0, 0, 0), new Color(127, 127, 127),
             new Color(195, 195, 195), new Color(136, 0, 21), new Color(185, 122, 87), new Color(237, 28, 36),
             new Color(255, 174, 201), new Color(255, 127, 39), new Color(255, 242, 0), new Color(239, 228, 176),
@@ -43,26 +37,27 @@ public class ColorPanel extends JPanel {
         addColorPanel();
     }
 
-    public void addColorPanel() {
+    private void addColorPanel() {
         // 主面板添加左边面板
-
         this.setPreferredSize(new Dimension(60, 60));
         this.setLayout(null);
         this.setBackground(new Color(195, 195, 195));
-
         // 左边面板添加子面板
-        paneldownchild = new JPanel();
-        paneldownchild.setBackground(Color.cyan);
-        paneldownchild.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
-        paneldownchild.setBounds(10, 10, 40, 280);
-        paneldownchild.setToolTipText("颜色");
-        this.add(paneldownchild);
 
-        // 按钮特效
-        bb = new BevelBorder(0, Color.gray, Color.white);
-        bb1 = new BevelBorder(1, Color.gray, Color.white);
+        JPanel panelDownChild = new JPanel();
+        panelDownChild.setBackground(Color.cyan);
+        panelDownChild.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        panelDownChild.setBounds(10, 10, 40, 280);
+        panelDownChild.setToolTipText("颜色");
+        this.add(panelDownChild);
 
-        left = new JPanel();
+
+
+        // 按钮特效,简单的双线斜面边框
+        BevelBorder bb = new BevelBorder(0, Color.gray, Color.white);
+        BevelBorder bb1 = new BevelBorder(1, Color.gray, Color.white);
+
+        JPanel left = new JPanel();
         left.setBackground(Color.white);
         left.setLayout(null);
         left.setBorder(bb);
@@ -82,58 +77,45 @@ public class ColorPanel extends JPanel {
         left.add(bt1);
 
         // 右面板
-        right = new JPanel();
+        JPanel right = new JPanel();
         right.setBackground(new Color(195, 195, 195));
         right.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         right.setPreferredSize(new Dimension(60, 240));
 
-        paneldownchild.add(left);
-        paneldownchild.add(right);
+        panelDownChild.add(left);
+        panelDownChild.add(right);
 
         // 循环添加24个颜色按钮
         for (int i = 0; i < 24; i++) {
             JButton bt3 = new JButton();
-            // Color c = new Color(i * 10, 30 - i, i * 7 + 50);
             bt3.setOpaque(true);
             bt3.setBackground(colors[i]);
             bt3.setPreferredSize(new Dimension(20, 20));
             bt3.setBorder(bb);
-            bt3.addActionListener(new ActionListener() {
+            bt3.addActionListener(e -> {
+                // 拿到被选中按钮的对象
+                JButton jbt = (JButton) e.getSource();
+                // 拿到被选中按钮的背景颜色
+                Color c = jbt.getBackground();
+                // 把背景颜色复制给WIndowStart中的颜色属性
+                MyFrame.color = c;
+                // 把左面板中的按钮颜色设置成选中按钮的背景颜色
+                bt.setBackground(c);
+                MyFrame.itemList[MyFrame.index].color = c;
 
-                public void actionPerformed(ActionEvent e) {
-                    // 拿到被选中按钮的对象
-                    JButton jbt = (JButton) e.getSource();
-                    // 拿到被选中按钮的背景颜色
-                    Color c = jbt.getBackground();
-                    // 把背景颜色复制给WIndowStart中的颜色属性
-                    MyFrame.color = c;
-                    // 把左面板中的按钮颜色设置成选中按钮的背景颜色
-                    bt.setBackground(c);
-                    MyFrame.itemList[MyFrame.index].color = c;
-
-                }
             });
             right.add(bt3);
 
         }
 
         // 添加颜色窗口
-        btn_color = new JButton();
-        iconn = new ImageIcon(getClass().getResource("/image/color_48.png"));
-        btn_color.setIcon(iconn);
-        btn_color.setPreferredSize(new Dimension(40, 40));
-        btn_color.setToolTipText("更多颜色");
-        right.add(btn_color);
-        btn_color.addActionListener(e -> chooseColor());//java8的lambda表达式，和下边注释代码功能相同
-//        btn_color.addActionListener(new ActionListener() {
-//
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                chooseColor();
-//
-//            }
-//        });
-//java8的lambda表达式，
+        JButton btnColor = new JButton();
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/image/color_48.png"));
+        btnColor.setIcon(imageIcon);
+        btnColor.setPreferredSize(new Dimension(40, 40));
+        btnColor.setToolTipText("更多颜色");
+        right.add(btnColor);
+        btnColor.addActionListener(e -> chooseColor());
         bt.addActionListener(e -> {
             // 拿到被选中按钮的对象
             JButton jbt = (JButton) e.getSource();
@@ -144,7 +126,6 @@ public class ColorPanel extends JPanel {
             MyFrame.itemList[MyFrame.index].color = c;
 
         });
-
         bt1.addActionListener(e -> {
             // 拿到被选中按钮的对象
             JButton jbt = (JButton) e.getSource();
@@ -154,10 +135,11 @@ public class ColorPanel extends JPanel {
             MyFrame.itemList[MyFrame.index].color = c;
 
         });
-
     }
 
-    // 选择当前颜色程序段
+    /**
+     * 选择当前颜色程序段
+     */
     public static void chooseColor() {
         MyFrame.color = JColorChooser.showDialog(null, "请选择颜色", MyFrame.color);
         // 把左面板中的按钮颜色设置成选中按钮的背景颜色

@@ -4,10 +4,10 @@ import java.awt.*;
 
 /**
  * 橡皮檫类
- * @author
+ * @author shensr
  *
  */
-public class Rubber extends Shape {
+public class Rubber extends AbstractShape {
 	/**
 	 * BasicStroke的几个字段
 	 * CAP_SQUARE 	使用正方形结束未封闭的子路径和虚线线段，
@@ -19,6 +19,7 @@ public class Rubber extends Shape {
 	public Rubber(){
 		
 	}
+	@Override
 	public void draw(Graphics2D g) {
 		g.setPaint(Color.white);
 		g.setStroke(new BasicStroke(20, BasicStroke.CAP_SQUARE , BasicStroke.JOIN_BEVEL));

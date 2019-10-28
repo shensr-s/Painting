@@ -2,10 +2,14 @@ package cn.edu.nwafu.shape;
 
 import java.awt.*;
 
+/**
+ * 填充圆
+ * @author shensr
+ */
+public class FillCircle extends AbstractShape {
 
-public class FillCircle extends Shape{
 
-
+	@Override
 	public void draw(Graphics2D g2d) {
 		g2d.setPaint(color);
 		g2d.setStroke(new BasicStroke(width));

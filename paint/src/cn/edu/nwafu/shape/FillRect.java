@@ -1,10 +1,14 @@
 package cn.edu.nwafu.shape;
 
 import java.awt.*;
+/**
+ *
+ * @author shensr
+ */
+public class FillRect extends AbstractShape {
 
-public class FillRect extends Shape {
 
-
+	@Override
 	public void draw(Graphics2D g2d) {
 		g2d.setPaint(color);
 		g2d.setStroke(new BasicStroke(width));

@@ -2,10 +2,14 @@ package cn.edu.nwafu.shape;
 
 import java.awt.*;
 
+/**
+ * 圆
+ * @author shensr
+ */
+public class Circle extends AbstractShape {
 
-public class Circle extends Shape{
 
-
+	@Override
 	public void draw(Graphics2D g2d) {
 		g2d.setPaint(color);
 		g2d.setStroke(new BasicStroke(width));
